@@ -1,0 +1,121 @@
+/* Container & Title */
+.lottery-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    /* background: linear-gradient(135deg, #1e1e2f, #282c34); */
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.lottery-title {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #00e0ff;
+}
+
+/* Ticket Styling */
+.ticket {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: fit-content;
+    padding: 20px 40px;
+    border: 2px solid #00e0ff;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 30px rgba(0, 224, 255, 0.3);
+    margin-bottom: 20px;
+}
+
+/* Numbers Styling */
+.lottery-num {
+    font-size: 100px;
+    color: #ff4081;
+    text-shadow: 0 0 20px #ff4081aa;
+    transition: transform 0.3s ease;
+}
+
+.lottery-num:hover {
+    transform: scale(1.2) rotate(5deg);
+}
+
+/* AI Magical Button */
+.gen-btn {
+    margin-top: 10px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #5A00FF, #00E0FF);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(90, 0, 255, 0.6), 0 0 40px rgba(0, 224, 255, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.gen-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.2), transparent 70%);
+    animation: magicPulse 3s infinite linear;
+}
+
+@keyframes magicPulse {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.gen-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(90, 0, 255, 0.8), 0 0 60px rgba(0, 224, 255, 0.6);
+}
+
+/* Winner Message */
+.winner-msg {
+    margin-top: 20px;
+    font-size: 24px;
+    color: #00ff90;
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #00ff90, 0 0 20px #00ff90;
+    }
+    to {
+        text-shadow: 0 0 20px #00ffaa, 0 0 40px #00ffaa;
+    }
+}
+
+
+.lottery-num {
+    font-size: 100px;
+    color: #ff4081;
+    text-shadow: 0 0 20px #ff4081aa;
+    transition: transform 0.3s ease, filter 0.2s ease;
+    min-width: 100px;
+    text-align: center;
+}
+
+/* Add this animation effect during rolling */
+.gen-btn:disabled + .winner-msg,
+.gen-btn:disabled ~ .ticket .lottery-num {
+    filter: blur(2px);
+    transform: scale(1.1);
+}
